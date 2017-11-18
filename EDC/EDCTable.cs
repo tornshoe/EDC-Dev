@@ -23,7 +23,7 @@ namespace EDC
             string query = "SELECT * FROM edc " +
                 "WHERE Status = " + status;             //A modifiable query meant to be usable by multiple forms
 
-            using (SqlConnection destServ = new SqlConnection("Data Source=ist-nparker\\edcserver;Initial Catalog=EDCdb;Integrated Security=True;"))
+            using (SqlConnection destServ = new SqlConnection(ConfigurationManager.AppSettings["sqlDestination"]))
             using (SqlCommand cmd = new SqlCommand(query, destServ))
             {
                 try

@@ -67,7 +67,7 @@ namespace EDC
                 string cmdString = "INSERT INTO edc(Creqdt, Storenum, Custname, Custssn, Contractno, Creqby, Creqinfo, Checkno, Creqext, Urgent, Creqreason, Status) VALUES (@val1, @val2, @val3, @val4, @val5," +
                     "@val6, @val7, @val8, @val9, @val10, @val11, @val12)";
 
-                using (SqlConnection destServ = new SqlConnection("Data Source=ist-nparker\\edcserver;Initial Catalog=EDCdb;Integrated Security=True;"))
+                using (SqlConnection destServ = new SqlConnection(ConfigurationManager.AppSettings["sqlDestination"]))
                 using (SqlCommand command = new SqlCommand())
                 {
                     destServ.Open();
