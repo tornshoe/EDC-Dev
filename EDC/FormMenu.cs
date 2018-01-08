@@ -24,8 +24,10 @@ namespace EDC
         /// <param name="e"></param>
         private void completeButton_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             FormComplete formComplete = new FormComplete();
             Hide();
+            Cursor.Current = Cursors.Default;
             formComplete.ShowDialog();
             this.Show();
         }
@@ -42,8 +44,10 @@ namespace EDC
         /// <param name="e"></param>
         private void requestButton_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             FormRequest formRequest = new FormRequest();
             Hide();
+            Cursor.Current = Cursors.Default;
             formRequest.ShowDialog();
             this.Show();
         }

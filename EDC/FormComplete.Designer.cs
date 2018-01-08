@@ -83,6 +83,7 @@
             this.buttonNext = new System.Windows.Forms.Button();
             this.buttonRefresh = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
+            this.labelEDCCount = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -566,6 +567,7 @@
             // comboBoxPrimCause
             // 
             this.comboBoxPrimCause.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxPrimCause.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxPrimCause.FormattingEnabled = true;
             this.comboBoxPrimCause.Location = new System.Drawing.Point(89, 315);
             this.comboBoxPrimCause.Name = "comboBoxPrimCause";
@@ -575,6 +577,7 @@
             // comboBoxCauseDetail
             // 
             this.comboBoxCauseDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxCauseDetail.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCauseDetail.FormattingEnabled = true;
             this.comboBoxCauseDetail.Location = new System.Drawing.Point(520, 315);
             this.comboBoxCauseDetail.Name = "comboBoxCauseDetail";
@@ -584,6 +587,7 @@
             // comboBoxSecCause
             // 
             this.comboBoxSecCause.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxSecCause.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSecCause.FormattingEnabled = true;
             this.comboBoxSecCause.Location = new System.Drawing.Point(89, 347);
             this.comboBoxSecCause.Name = "comboBoxSecCause";
@@ -637,6 +641,7 @@
             this.buttonBeginCorr.TabIndex = 0;
             this.buttonBeginCorr.Text = "Begin Corrections";
             this.buttonBeginCorr.UseVisualStyleBackColor = true;
+            this.buttonBeginCorr.Click += new System.EventHandler(this.buttonBeginCorr_Click);
             // 
             // tableLayoutPanel4
             // 
@@ -648,6 +653,7 @@
             this.tableLayoutPanel4.Controls.Add(this.label20, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.label21, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.textBoxDesAct, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.labelEDCCount, 1, 2);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(293, 447);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -693,6 +699,7 @@
             // textBoxDesAct
             // 
             this.textBoxDesAct.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxDesAct.Enabled = false;
             this.textBoxDesAct.Location = new System.Drawing.Point(132, 3);
             this.textBoxDesAct.Multiline = true;
             this.textBoxDesAct.Name = "textBoxDesAct";
@@ -764,6 +771,18 @@
             this.buttonExit.Text = "Exit";
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
+            // 
+            // labelEDCCount
+            // 
+            this.labelEDCCount.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelEDCCount.AutoSize = true;
+            this.labelEDCCount.Location = new System.Drawing.Point(132, 148);
+            this.labelEDCCount.Name = "labelEDCCount";
+            this.labelEDCCount.Size = new System.Drawing.Size(598, 38);
+            this.labelEDCCount.TabIndex = 4;
+            this.labelEDCCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormComplete
             // 
@@ -844,5 +863,6 @@
         private System.Windows.Forms.ComboBox comboBoxPrimCause;
         private System.Windows.Forms.ComboBox comboBoxCauseDetail;
         private System.Windows.Forms.ComboBox comboBoxSecCause;
+        private System.Windows.Forms.Label labelEDCCount;
     }
 }

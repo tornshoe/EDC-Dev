@@ -75,11 +75,15 @@ namespace EDC
                 textBoxProb.Text = currentRow["Creqinfo"].ToString();
                 textBoxStartDate.Text = currentRow["Cstartdt"].ToString();
                 textBoxStartBy.Text = currentRow["Cstartby"].ToString();
+                textBoxDesAct.Text = currentRow["Creqreason"].ToString();
+
+                labelEDCCount.Text = ("EDC: " + (table.getCurrentEDC() + 1) + "/" + table.getDT().Rows.Count);
             }
 
             else
             {
                 MessageBox.Show("No EDCs in progress!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                labelEDCCount.Text = "EDC: " + table.getCurrentEDC() + "/0";
             }
         }
 
@@ -96,15 +100,22 @@ namespace EDC
                 }
             }
 
+            checkBoxBackdating.Enabled = false;
             checkBoxBackdating.Checked = false;
             checkBoxUrgent.Checked = false;
 
             comboBoxPrimCause.SelectedIndex = 4;
+            comboBoxPrimCause.Enabled = false;
             comboBoxCauseDetail.SelectedIndex = 5;
+            comboBoxCauseDetail.Enabled = false;
             comboBoxSecCause.SelectedIndex = 11;
+            comboBoxSecCause.Enabled = false;
 
+            buttonBeginCorr.Enabled = true;
             buttonSave.Enabled = false;
             buttonComplete.Enabled = false;
+
+            textBoxActTake.Enabled = false;
         }
 
         /// <summary>
@@ -144,6 +155,7 @@ namespace EDC
         /// <param name="e"></param>
         private void buttonNext_Click(object sender, EventArgs e)
         {
+
             table.setCurrentEDC(table.getCurrentEDC() + 1);
             clearForm();
             showEDC();
@@ -165,7 +177,34 @@ namespace EDC
 
         private void buttonRefresh_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             setForm();
+            Cursor.Current = Cursors.Default;
+        }
+
+        /// <summary>
+        /// Starts the process of actually entering the relevant info to the correction, prepping it for sending to the DB
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonBeginCorr_Click(object sender, EventArgs e)
+        {
+            buttonBeginCorr.Enabled = false;
+            buttonSave.Enabled = true;
+            buttonComplete.Enabled = true;
+
+            comboBoxPrimCause.Enabled = true;
+            comboBoxCauseDetail.Enabled = true;
+            comboBoxSecCause.Enabled = true;
+
+            textBoxActTake.Enabled = true;
+
+            checkBoxBackdating.Enabled = true; ;
+
+            if ((textBoxStartDate.Text == "") || (textBoxStartDate.Text == null))
+            {
+                textBoxStartDate.Text = DateTime.Now.ToString();
+            }
         }
     }
 }

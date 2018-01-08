@@ -23,6 +23,8 @@ namespace EDC
             string query = "SELECT * FROM edc " +
                 "WHERE Status = " + status;             //A modifiable query meant to be usable by multiple forms
 
+            //MessageBox.Show(ConfigurationManager.AppSettings["sqlDestination"]);
+
             using (SqlConnection destServ = new SqlConnection(ConfigurationManager.AppSettings["sqlDestination"]))
             using (SqlCommand cmd = new SqlCommand(query, destServ))
             {
@@ -34,6 +36,7 @@ namespace EDC
                 catch
                 {
                     MessageBox.Show("Could not connect to SQL server!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
                 DataTable dt = new DataTable();
@@ -46,6 +49,7 @@ namespace EDC
                 catch
                 {
                     MessageBox.Show("Could not execute SQL query!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
                 this.dt = dt;
