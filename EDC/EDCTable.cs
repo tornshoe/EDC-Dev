@@ -56,6 +56,11 @@ namespace EDC
             }
         }
 
+        public void sendEDC(string status, DataRow currentRow)
+        {
+            ///Will need to send only data which can change in a given form
+        }
+
         public DataTable getDT()
         {
             return dt;

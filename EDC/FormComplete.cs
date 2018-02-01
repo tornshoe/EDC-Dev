@@ -102,7 +102,10 @@ namespace EDC
 
             checkBoxBackdating.Enabled = false;
             checkBoxBackdating.Checked = false;
+            checkBoxUrgent.Enabled = false;
             checkBoxUrgent.Checked = false;
+            checkBoxNoAct.Enabled = false;
+            checkBoxNoAct.Checked = false;
 
             comboBoxPrimCause.SelectedIndex = 4;
             comboBoxPrimCause.Enabled = false;
@@ -199,12 +202,33 @@ namespace EDC
 
             textBoxActTake.Enabled = true;
 
-            checkBoxBackdating.Enabled = true; ;
+            checkBoxBackdating.Enabled = true;
+            checkBoxNoAct.Enabled = true;
 
             if ((textBoxStartDate.Text == "") || (textBoxStartDate.Text == null))
             {
                 textBoxStartDate.Text = DateTime.Now.ToString();
             }
+        }
+
+        /// <summary>
+        /// Takes all data on the correction and adds it to the current DataTable Row in order to send it back to the SQL DB
+        /// </summary>
+        private void updateRow()
+        {
+            DataRow currentRow = table.getDT().Rows[table.getCurrentEDC()];
+
+            currentRow["Cstartdt"] = Convert.ToDateTime(textBoxStartDate.Text);
+            //add completion date to DB
+            //add completion duration to DB
+            currentRow["Causecode"] = comboBoxPrimCause.Text;
+            //add secondary cause to DB
+            currentRow["Cstartby"] = textBoxStartBy;
+            currentRow["Cactionby"] = textBoxCompBy.Text;
+            currentRow["Backdated"] = checkBoxBackdating.Checked;
+            currentRow["Corrcodes"] = comboBoxCauseDetail.Text;
+            //add no act taken to DB
+            currentRow["Caction"] = textBoxActTake.Text;
         }
     }
 }
